@@ -1,3 +1,8 @@
+# Important Notice.
+
+This code base licensed under the AGPL license has been taken and replublished under an MPL License and is available at https://github.com/Symplectic/vivo.
+Please direct all enquiries there.
+
 # Vivo Harvester for Symplectic Elements
 
 This file is written in Markdown, best viewed at http://github-preview.herokuapp.com/ or https://github.com/ieb/symplectic-harvester
