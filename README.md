@@ -21,7 +21,7 @@ Build and deploy Vivo Harvester remembering to deploy dependencies.
 
       git clone git@github.com:ieb/vivo-harvester.git
       cd vivo-harvester
-      git checkout symplectic
+      git checkout -b symplectic origin/symplectic
       mvn clean dependency:copy-dependencies install
 
 
