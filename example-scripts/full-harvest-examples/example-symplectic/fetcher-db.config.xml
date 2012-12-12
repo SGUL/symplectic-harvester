@@ -2,9 +2,9 @@
 <db-config db-type="mysql" max-url-age="864000">
 	<mysql>
 		<jdbc-class>com.mysql.jdbc.Driver</jdbc-class>
-		<jdbc-url>jdbc:mysql://localhost/vivo?useUnicode=true&amp;characterEncoding=UTF-8&amp;useServerPrepStmts=false&amp;cachePrepStmts=true&amp;prepStmtCacheSize=4096&amp;prepStmtCacheSqlLimit=4096</jdbc-url>
-		<jdbc-user>vivo</jdbc-user>
-		<jdbc-password>vivopw</jdbc-password>
+		<jdbc-url>jdbc:mysql://ldap1.sgul.ac.uk/vivo15test?useUnicode=true&amp;characterEncoding=UTF-8&amp;useServerPrepStmts=false&amp;cachePrepStmts=true&amp;prepStmtCacheSize=4096&amp;prepStmtCacheSqlLimit=4096</jdbc-url>
+		<jdbc-user>vivouser</jdbc-user>
+		<jdbc-password>pc4350cb</jdbc-password>
 		<check-db-sql>select count(*) from symplectic_fetch</check-db-sql>
 		<update-url-state-sql>update symplectic_fetch set url = ?, lastupdate
 			= ?, loadstate = ? where id = ? </update-url-state-sql>

@@ -11,7 +11,7 @@
 	xmlns:rdfs='http://www.w3.org/2000/01/rdf-schema#' xmlns:ufVivo='http://vivo.ufl.edu/ontology/vivo-ufl/'>
 
 	<!-- This will create indenting in xml readers -->
-	<xsl:variable name="baseURI">http://changeme/to/match/vivo/deploy/properties</xsl:variable>
+	<xsl:variable name="baseURI">http://vivo.sgul.ac.uk:8080/vivo15test/individual/</xsl:variable>
 	<xsl:output method="xml" encoding="UTF-8" indent="yes" />
 
     <!--  set to true to remove non current users. -->

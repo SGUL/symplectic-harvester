@@ -27,5 +27,5 @@
 	<Param name="maxUrlGet">10000</Param>
 	<Param name="output">raw-records.config.xml</Param>
 	<Param name="updateList">false</Param>	
-	<Param name="url">http://fashion.symplectic.org:2020/publications-cantab-api</Param>
+	<Param name="url">http://cris.sgul.ac.uk:8090/publications-api</Param>
 </Task>
