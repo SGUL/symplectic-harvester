@@ -10,6 +10,8 @@
 	xmlns:score='http://vivoweb.org/ontology/score#' xmlns:bibo='http://purl.org/ontology/bibo/'
 	xmlns:rdfs='http://www.w3.org/2000/01/rdf-schema#' xmlns:ufVivo='http://vivo.ufl.edu/ontology/vivo-ufl/'>
 
+
+
 	<!-- This will create indenting in xml readers -->
 	<xsl:variable name="baseURI">http://vivo.sgul.ac.uk:8080/vivo15test/individual/</xsl:variable>
 	<xsl:output method="xml" encoding="UTF-8" indent="yes" />
@@ -17,6 +19,18 @@
     <!--  set to true to remove non current users. -->
     <xsl:variable name="removeNonCurrent">true</xsl:variable>
     
+    <!-- creates root element, as this is absent in the original version -->
+    <xsl:template match="/*">
+        <myTable>
+            <xsl:call-template name="identity"/>
+        </myTable>
+    </xsl:template>
+    <xsl:template match="@*|node()" name="identity">
+        <xsl:copy>
+            <xsl:apply-templates/>
+        </xsl:copy>
+    </xsl:template>
+
     
 	<xsl:template match="/svo:object/api:object[@category='user']">
 			<rdf:RDF xmlns:owlPlus='http://www.w3.org/2006/12/owl2-xml#'
