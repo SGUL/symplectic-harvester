@@ -64,8 +64,8 @@ harvester-symplecticfetch -X symplecticfetch.config.xml
 #   becoming valid RDF in the VIVO ontology
 harvester-xsltranslator -X xsltranslator.config.xml
 
-# Execute LDAP extraction
-perl $PATH_LDAP_EXTRACTOR/ldap.pl
+echo "Running ldap export..."
+. /root/data.sgul.ac.uk-deploy/data.sgul.ac.uk/cron/vivo/ldap.pl
 
 # Execute Transfer to import from record handler into local temp model
 # From this stage on the script places the data into a Jena model. A model is a
@@ -77,7 +77,6 @@ perl $PATH_LDAP_EXTRACTOR/ldap.pl
 # -d means that this call will also produce a text dump file in the specified location 
 # dont add to harvested data if not scoring harvester-transfer -s translated-records.config.xml -o harvested-data.model.xml -d data/harvested-data/imported-records.rdf.xml
 harvester-transfer -s translated-records.config.xml -o matched-data.model.xml -d data/matched-data/imported-records.rdf.xml
-
 
 # Perform an update
 # The harvester maintains copies of previous harvests in order to perform the same harvest twice
@@ -113,9 +112,7 @@ AUTHORS=`cat data/vivo-additions.rdf.xml | grep 'http://xmlns.com/foaf/0.1/Perso
 AUTHORSHIPS=`cat data/vivo-additions.rdf.xml | grep Authorship | wc -l`
 echo "Imported $PUBS publications, $AUTHORS authors, and $AUTHORSHIPS authorships"
 
-
 harvester-smush -r -i vivo.model.xml -P http://www.symplectic.co.uk/vivo/smush -n $BASE_URI
 
 echo "Smush completed"
-
 echo 'Harvest completed successfully'
