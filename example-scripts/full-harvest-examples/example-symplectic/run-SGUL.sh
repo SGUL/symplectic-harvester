@@ -15,6 +15,9 @@
 #	data could be rendered corrupted and incompatible.
 set -e
 
+PATH_LDAP_EXTRACTOR="/root/data.sgul.ac.uk-deploy/data.sgul.ac.uk/cron/vivo"
+
+
 BASE_URI=`grep 'xsl:variable name="baseURI"' symplectic-to-vivo.datamap.xsl  | sed 's/.*>\(.*\)<.*/\1/'`
 if [ a$BASE_URI = "ahttp://changeme/to/match/vivo/deploy/properties" ]; then
    echo Please change the baseURI settings in symplectic-to-vivo.datamap.xsl to match your vivo deploy.properties
@@ -43,7 +46,7 @@ cd ..
 #	If you are continuing a partial run or wish to use the old and already retrieved
 #	data, you will want to comment out this line since it could prevent you from having
 # 	the required harvest data.  
-#rm -rf data
+rm -rf data
 #cp -r datasafe data
 
 # Execute Fetch
@@ -53,13 +56,16 @@ cd ..
 # The symplecticFetch tool in particular takes the data from the chosen source described in its
 #	configuration XML file and places it into record set in the flat RDF directly 
 #	related to the rows, columns and tables described in the target database.
-# DON'T RUN harvester-symplecticfetch -X symplecticfetch.config.xml 
+harvester-symplecticfetch -X symplecticfetch.config.xml 
 
 # Execute Translate
 # This is the part of the script where the input data is transformed into valid RDF
 #   Translate will apply an xslt file to the fetched data which will result in the data 
 #   becoming valid RDF in the VIVO ontology
-# DON'T RUN harvester-xsltranslator -X xsltranslator.config.xml
+harvester-xsltranslator -X xsltranslator.config.xml
+
+# Execute LDAP extraction
+perl $PATH_LDAP_EXTRACTOR/ldap.pl
 
 # Execute Transfer to import from record handler into local temp model
 # From this stage on the script places the data into a Jena model. A model is a
