@@ -1,3 +1,6 @@
+THIS REPOSITORY IS NOW DEPRECATED. 
+
+
 # Important Notice.
 
 This code base licensed under the AGPL license has been taken and replublished under an MPL License and is available at https://github.com/Symplectic/vivo.
